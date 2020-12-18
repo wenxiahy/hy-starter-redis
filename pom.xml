@@ -6,7 +6,7 @@
 
     <groupId>com.wenxiahy</groupId>
     <artifactId>hy-starter-redis</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>hy-starter-redis</name>
@@ -61,6 +61,11 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
             <version>${springboot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+            <version>5.1.7.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

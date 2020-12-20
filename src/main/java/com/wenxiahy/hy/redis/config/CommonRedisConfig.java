@@ -33,7 +33,7 @@ public class CommonRedisConfig extends AbstractRedisConfig {
     @Value("${spring.redis.common.password:animal}")
     private String password;
 
-    @Value("${spring.redis.common.timeout:3000}")
+    @Value("${spring.redis.common.timeout:30000}")
     private int timeout;
 
     @Bean("commonRedisFactory")

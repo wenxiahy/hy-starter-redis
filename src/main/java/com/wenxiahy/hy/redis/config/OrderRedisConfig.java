@@ -32,7 +32,7 @@ public class OrderRedisConfig extends AbstractRedisConfig {
     @Value("${spring.redis.order.password:animal}")
     private String password;
 
-    @Value("${spring.redis.order.timeout:3000}")
+    @Value("${spring.redis.order.timeout:30000}")
     private int timeout;
 
     @Bean("orderRedisFactory")

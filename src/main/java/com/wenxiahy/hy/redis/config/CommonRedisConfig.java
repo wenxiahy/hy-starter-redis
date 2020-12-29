@@ -2,6 +2,8 @@ package com.wenxiahy.hy.redis.config;
 
 import com.wenxiahy.hy.redis.service.RedisService;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +25,8 @@ import java.time.Duration;
  */
 @Configuration
 public class CommonRedisConfig extends AbstractRedisConfig {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommonRedisConfig.class);
 
     @Value("${spring.redis.common.host:localhost}")
     private String host;
@@ -60,7 +64,7 @@ public class CommonRedisConfig extends AbstractRedisConfig {
 
     @Bean("commonRedisService")
     public RedisService createRedisService(@Qualifier("commonRedisTemplate") RedisTemplate<String, Object> redisTemplate) {
-        System.out.println(host + ":" + port + "，commonRedisService配置成功");
+        LOGGER.info("commonRedisService配置成功，{}:{}", host, port);
         return new RedisService(redisTemplate);
     }
 }

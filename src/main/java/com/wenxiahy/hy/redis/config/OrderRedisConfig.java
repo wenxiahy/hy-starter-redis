@@ -2,6 +2,8 @@ package com.wenxiahy.hy.redis.config;
 
 import com.wenxiahy.hy.redis.service.RedisService;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +24,8 @@ import java.time.Duration;
  */
 @Configuration
 public class OrderRedisConfig extends AbstractRedisConfig {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderRedisConfig.class);
 
     @Value("${spring.redis.order.host:localhost}")
     private String host;
@@ -58,7 +62,7 @@ public class OrderRedisConfig extends AbstractRedisConfig {
 
     @Bean("orderRedisService")
     public RedisService createRedisService(@Qualifier("orderRedisTemplate") RedisTemplate<String, Object> redisTemplate) {
-        System.out.println(host + ":" + port + "，orderRedisService配置成功");
+        LOGGER.info("orderRedisService配置成功，{}:{}", host, port);
         return new RedisService(redisTemplate);
     }
 }
